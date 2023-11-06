@@ -36,9 +36,8 @@ jobs:
         run: |
           node index.js
 
-      - uses: actions/checkout@v4
-      - id: arweave-bundler
-        uses: ../
+      - Name: test the arweave-bundler action
+        uses: ./arweave-bundler
         with:
           directory: build/
           private-key: ${secret.ARWEAVE_PRIVATE_KEY}
