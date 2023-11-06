@@ -45,6 +45,7 @@ describe('traverseDirectory', () => {
     const result = await traverseDirectory(absolutePath)
     assert.ok(Array.isArray(result), 'Result should be an array')
     assert.strictEqual(result.length, 0, 'Result should be an empty array')
+    await fs.open(keepFile, 'w')
   })
 
   it('should reject the promise for an invalid directory', async () => {
