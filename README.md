@@ -3,13 +3,6 @@
 A GitHub action and CLI to upload static assets from a directory. 
 Ideal for publishing Single Page App (SPA) or other static contents to the permameweb.
 
-## Requirements
-- Node v20
-- An Arweave private key with some $AR funds 
-- If you don't have an arweave wallet you can create one 
-  - `npm install arweave`
-  - `node -e "require('arweave').init({}).wallets.generate().then(JSON.stringify).then(console.log.bind(console)) > wallet.json"`
-
 ## Use the action
 
 ```
@@ -27,9 +20,23 @@ with:
 npx arweave-bundler upload build/ --private-key ${PRIVATE_KEY}
 ```
 
+or 
+
+```
+pnpm dlx arweave-bundler upload build/ --private-key ${PRIVATE_KEY}
+```
+
 ## Troubleshooting
 - Create a base64 encoded private key from a JSON file `openssl base64 -in wallet.json -A -out base64key.txt`
 - Export as string a privateKey
 ```
 export PRIVATE_KEY=`cat base64key.txt`
 ```
+
+## Dev requirements
+- Node v20 (LTS) 
+- [pnpm](https://pnpm.io/)
+- An Arweave private key with some $AR funds
+- If you don't have an arweave wallet you can create one
+  - `pnpm install arweave`
+  - `node -e "require('arweave').init({}).wallets.generate().then(JSON.stringify).then(console.log.bind(console)) > wallet.json"`
