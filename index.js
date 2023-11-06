@@ -1,18 +1,10 @@
 import { getInput, setOutput, setFailed } from '@actions/core'
-import { context } from '@actions/github'
-import fs from 'fs'
 import { upload } from './src/upload.js'
 
 try {
   const directory = getInput('directory')
   const dryRun = getInput('dry-run')
   const base64PrivateKey = getInput('private-key')
-  console.log(`Hello ${directory}!`)
-  const time = new Date().toTimeString()
-
-  // Get the JSON webhook payload for the event that triggered the workflow
-  // const payload = JSON.stringify(context.payload, undefined, 2)
-  // console.log(`The event payload: ${payload}`);
 
   let privateKey
   try {
