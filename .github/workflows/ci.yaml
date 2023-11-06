@@ -38,7 +38,7 @@ jobs:
 
       - uses: actions/checkout@v4
       - id: arweave-bundler
-        uses: ./
+        uses: ../
         with:
           directory: build/
           private-key: ${secret.ARWEAVE_PRIVATE_KEY}
