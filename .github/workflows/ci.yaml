@@ -28,6 +28,11 @@ jobs:
           pnpm install
           pnpm test:coverage
 
+      - name: Print Node Modules
+        run: |
+          ls -la node_modules
+          ls -la .pnpm
+
       - uses: actions/checkout@v4
       - id: arweave-bundler
         uses: ./
