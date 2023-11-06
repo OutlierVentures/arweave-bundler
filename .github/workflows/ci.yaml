@@ -28,14 +28,6 @@ jobs:
           pnpm install
           pnpm test:coverage
 
-      - name: Print Node Modules
-        run: |
-          ls -la node_modules
-          ls -la node_modules/@actions
-      - name: run the of the action index.js
-        run: |
-          node index.js
-
       - name: test the arweave-bundler action
         uses: ./
         with:
