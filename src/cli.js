@@ -2,7 +2,7 @@
 import yargs from 'yargs'
 import fs from 'fs'
 import { hideBin } from 'yargs/helpers'
-import { upload } from './arweave-upload.js'
+import { upload } from './upload.js'
 
 yargs(hideBin(process.argv))
   .demandCommand(1, 'You need to specify a command')

@@ -1,3 +1,4 @@
 node_modules
 base64key.txt
 build
+.coverage

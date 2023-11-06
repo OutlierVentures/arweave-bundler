@@ -3,13 +3,13 @@
   "version": "0.2.0",
   "description": "",
   "type": "module",
-  "main": "src/arweave-cli.js",
+  "main": "src/cli.js",
   "engines": {
     "node": ">20"
   },
   "scripts": {
     "test": "node --test --experimental-test-coverage ",
-    "test:coverage": "node --test --experimental-test-coverage ",
+    "test:coverage": "node --test --experimental-test-coverage --test-reporter spec",
     "test:watch": "node --test --watch",
     "test:watch-only": "node --test --watch --test-only"
   },

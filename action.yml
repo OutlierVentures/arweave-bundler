@@ -8,9 +8,13 @@ inputs:
   network:
     description: 'directory of static assets to upload'
     default: 'arweave.net'
+
 outputs:
   txId: # the tx id of arweave
-    description: 'The time we greeted you'
+    description: 'the tx id deployed on arweave'
+  blockExplorerURL:
+    description: 'A link to the tx on the block explorer'
+
 runs:
   using: 'node20'
   main: 'index.js'

@@ -1,12 +1,10 @@
 import { ArweaveSigner, bundleAndSignData } from 'arbundles'
 import Arweave from 'arweave'
-import {
-  buildManifest,
-  traverseDirectory,
-  createDataItem,
-  sleep,
-  executeTransaction,
-} from './utils.js'
+import { buildManifest } from './utils/buildManifest.js'
+import { createDataItem } from './utils/createDataItem.js'
+import { executeTransaction } from './utils/executeTransaction.js'
+import { sleep } from './utils/sleep.js'
+import { traverseDirectory } from './utils/traverseDirectory.js'
 
 export async function upload(buildDir, privateKey, dryRun) {
   console.log(`Starting upload of '${buildDir}' directory`)

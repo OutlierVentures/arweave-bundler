@@ -1,6 +1,6 @@
 import { it, describe, mock, beforeEach } from 'node:test'
 import assert from 'node:assert'
-import { upload } from './arweave-upload.js' // Import the upload function
+import { upload } from './upload.js' // Import the upload function
 import arweave from 'arweave'
 import privateKeyMock from './fixtures/wallet.json' assert { type: 'json' }
 

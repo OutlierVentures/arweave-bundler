@@ -9,7 +9,7 @@ describe.only('CLI', () => {
   it.only('should upload a directory to Arweave', () => {
 
     const privateKey = btoa(JSON.stringify(privateKeyMock))
-    const command = `src/arweave-cli.js upload ${directory} --private-key=${privateKey} --dry-run`
+    const command = `src/cli.js upload ${directory} --private-key=${privateKey} --dry-run`
 
     // Execute the CLI command using execSync
     const output = execSync(command).toString();
@@ -20,7 +20,7 @@ describe.only('CLI', () => {
 
   it.only('should throw an error if missing private key', () => {
     // Execute the CLI command without specifying a private key
-    const command = `src/arweave-cli.js upload ${directory} --dry-run`
+    const command = `src/cli.js upload ${directory} --dry-run`
 
     // Assert that executing the command throws an error
     assert.throws(() => {
