@@ -1,0 +1,39 @@
+name: Build
+
+on: ['push']
+#  push:
+#    branches:
+#      - master
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '20'
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 8
+
+      - name: Install Dependencies and Build
+        run: |
+          pnpm install
+          pnpm test:coverage
+
+      - uses: actions/checkout@v4
+      - id: arweave-bundler
+        uses: ./
+        with:
+          directory: build/
+          private-key: ${secret.ARWEAVE_PRIVATE_KEY}
+          dry-run: true
+          network: arweave.net
+
