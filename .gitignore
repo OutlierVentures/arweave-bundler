@@ -2,3 +2,4 @@ node_modules
 base64key.txt
 build
 .coverage
+package-lock.json
