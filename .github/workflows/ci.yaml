@@ -36,7 +36,7 @@ jobs:
         run: |
           node index.js
 
-      - Name: test the arweave-bundler action
+      - name: test the arweave-bundler action
         uses: ./arweave-bundler
         with:
           directory: build/
