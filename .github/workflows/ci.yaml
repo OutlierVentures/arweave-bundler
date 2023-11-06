@@ -31,7 +31,10 @@ jobs:
       - name: Print Node Modules
         run: |
           ls -la node_modules
-          ls -la .pnpm
+          ls -la node_modules/@actions
+      - name: run the of the action index.js
+        run: |
+          node index.js
 
       - uses: actions/checkout@v4
       - id: arweave-bundler
