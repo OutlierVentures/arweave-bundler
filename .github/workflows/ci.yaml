@@ -24,15 +24,15 @@ jobs:
           version: 8
 
       - name: Install Dependencies and Build
-        run: |
-          pnpm install
-          pnpm test:coverage
+        run: pnpm install
 
-      - name: test the arweave-bundler action
+      - name: run the tests
+        run: pnpm test:coverage
+
+      - name: arweave-bundler dry run
         uses: ./
         with:
           directory: build/
           private-key: ${{secrets.ARWEAVE_PRIVATE_KEY}}
           dry-run: true
           network: arweave.net
-
