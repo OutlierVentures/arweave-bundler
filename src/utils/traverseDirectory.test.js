@@ -1,15 +1,28 @@
 import assert from 'node:assert'
 import path from 'node:path'
-import { beforeEach, describe, it, mock } from 'node:test'
+import { beforeEach, before, after, describe, it, mock } from 'node:test'
 import { fileURLToPath } from 'node:url'
 import { traverseDirectory } from './traverseDirectory.js'
+import fs from 'node:fs/promises'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
 
 describe('traverseDirectory', () => {
   const testDirectory = '../fixtures/test-dir' // Replace with the actual test directory path
+  const emptyDirectory = '../fixtures/empty-dir' // Replace with the path to an empty directory
+
+  before(async () => {
+    const absolutePath = path.join(__dirname, emptyDirectory)
+    await fs.mkdir(absolutePath)
+  })
+
   beforeEach(() => mock.method(console, 'log', (msg) => ''))
+
+  after(async () => {
+    const absolutePath = path.join(__dirname, emptyDirectory)
+    await fs.rmdir(absolutePath)
+  })
 
   it('should return an array of file paths when a valid directory is provided', async () => {
     const results = await traverseDirectory(path.join(__dirname, testDirectory))
@@ -28,7 +41,8 @@ describe('traverseDirectory', () => {
 
   it('should return an empty array for an empty directory', async () => {
     const emptyDirectory = '../fixtures/empty-dir' // Replace with the path to an empty directory
-    const result = await traverseDirectory(path.join(__dirname, emptyDirectory))
+    const absolutePath = path.join(__dirname, emptyDirectory)
+    const result = await traverseDirectory(absolutePath)
     assert.ok(Array.isArray(result), 'Result should be an array')
     assert.strictEqual(result.length, 0, 'Result should be an empty array')
   })

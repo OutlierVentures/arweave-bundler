@@ -1,14 +1,23 @@
 import { getInput, setOutput, setFailed } from '@actions/core'
-import {context} from '@actions/github'
+import { upload } from './src/upload.js'
 
 try {
-    const directory = getInput('directory');
-    console.log(`Hello ${directory}!`);
-    const time = (new Date()).toTimeString();
-    setOutput("txId", time);
-    // Get the JSON webhook payload for the event that triggered the workflow
-    const payload = JSON.stringify(context.payload, undefined, 2)
-    console.log(`The event payload: ${payload}`);
+  const directory = getInput('directory')
+  const dryRun = getInput('dry-run')
+  const base64PrivateKey = getInput('private-key')
+
+  let privateKey
+  try {
+    privateKey = JSON.parse(
+      Buffer.from(base64PrivateKey, 'base64').toString('utf-8'),
+    )
+  } catch (e) {
+    throw new Error(
+      `Missing private key or not encoded as base64: ${e.message}`,
+    )
+  }
+
+  await upload(directory, privateKey, dryRun)
 } catch (error) {
-    setFailed(error.message);
+  setFailed(error.message)
 }

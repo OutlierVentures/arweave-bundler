@@ -1,5 +1,5 @@
 node_modules
 base64key.txt
-build
+wallet.json
 .coverage
 package-lock.json
