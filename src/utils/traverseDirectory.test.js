@@ -3,6 +3,7 @@ import path from 'node:path'
 import { beforeEach, describe, it, mock } from 'node:test'
 import { fileURLToPath } from 'node:url'
 import { traverseDirectory } from './traverseDirectory.js'
+import fs from 'node:fs/promises'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
@@ -28,9 +29,13 @@ describe('traverseDirectory', () => {
 
   it('should return an empty array for an empty directory', async () => {
     const emptyDirectory = '../fixtures/empty-dir' // Replace with the path to an empty directory
-    const result = await traverseDirectory(path.join(__dirname, emptyDirectory))
+    const absolutePath = path.join(__dirname, emptyDirectory)
+    const keepFile = `${absolutePath}/.keep`
+    await fs.unlink(keepFile)
+    const result = await traverseDirectory(absolutePath)
     assert.ok(Array.isArray(result), 'Result should be an array')
     assert.strictEqual(result.length, 0, 'Result should be an empty array')
+    await fs.open(keepFile, 'w')
   })
 
   it('should reject the promise for an invalid directory', async () => {
