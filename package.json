@@ -9,7 +9,7 @@
   },
   "scripts": {
     "test": "node --test --experimental-test-coverage ",
-    "test:coverage": "node --test --experimental-test-coverage --test-reporter spec",
+    "test:coverage": "node --test --experimental-test-coverage --test-reporter=spec",
     "test:watch": "node --test --watch",
     "test:watch-only": "node --test --watch --test-only"
   },
@@ -22,7 +22,7 @@
     "yargs": "^17.7.2"
   },
   "devDependencies": {
-    "@actions/core": "^1.10.1",
+    "@actions/core": "^1.1 0.1",
     "@actions/github": "^6.0.0",
     "esmock": "^2.5.8",
     "prettier": "^3.0.3"

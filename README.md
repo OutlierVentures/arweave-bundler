@@ -12,9 +12,21 @@ If you don't use GitHub actions, or you are up something else, worry not we have
   - `npm install arweave`
   - `node -e "require('arweave').init({}).wallets.generate().then(JSON.stringify).then(console.log.bind(console)) > wallet.json"`
 
-## Run the cli
+## Use the action
+
 ```
-./src/arweave-cli.js upload src/fixtures/test-dir --private-key ${PRIVATE_KEY} --dry-run
+uses: outlierventures/arweabe-bundler-action@v0.2.0
+with:
+  directory: build/
+  private-key: ${secret.ARWEAVE_PRIVATE_KEY}
+  dry-run: false
+  network: arweave.net
+```
+
+## Run the cli
+
+```
+npx arweave-bundler upload build/ --private-key ${PRIVATE_KEY}
 ```
 
 ## Troubleshooting

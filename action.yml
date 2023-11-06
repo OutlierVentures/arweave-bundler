@@ -5,6 +5,12 @@ inputs:
     description: 'directory of static assets to upload'
     required: true
     default: 'build'
+  private-key:
+    description: 'an Arweave private key (JWK) encoded as base64'
+    required: true
+  dry-run:
+    description: 'run everything but skip to submit the tx to Arweave network'
+    default: false
   network:
     description: 'directory of static assets to upload'
     default: 'arweave.net'
