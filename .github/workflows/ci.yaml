@@ -37,7 +37,7 @@ jobs:
           node index.js
 
       - name: test the arweave-bundler action
-        uses: ./arweave-bundler
+        uses: ./
         with:
           directory: build/
           private-key: ${secret.ARWEAVE_PRIVATE_KEY}
