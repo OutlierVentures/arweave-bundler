@@ -25,8 +25,7 @@ try {
     )
   }
 
-  const transactionConfirmedData = await upload(directory, privateKey, dryRun)
-  return transactionConfirmedData.block_indep_hash
+  await upload(directory, privateKey, dryRun)
 } catch (error) {
   setFailed(error.message)
 }
