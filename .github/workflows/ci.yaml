@@ -32,7 +32,7 @@ jobs:
         uses: ./
         with:
           directory: build/
-          private-key: ${secret.ARWEAVE_PRIVATE_KEY}
+          private-key: ${{secrets.ARWEAVE_PRIVATE_KEY}}
           dry-run: true
           network: arweave.net
 
