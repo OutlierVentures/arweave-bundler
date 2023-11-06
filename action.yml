@@ -1,0 +1,16 @@
+name: 'arweave-bundler'
+description: 'an arweave bundle to deploy a directory into the permanent web'
+inputs:
+  directory:
+    description: 'directory of static assets to upload'
+    required: true
+    default: 'build'
+  network:
+    description: 'directory of static assets to upload'
+    default: 'arweave.net'
+outputs:
+  txId: # the tx id of arweave
+    description: 'The time we greeted you'
+runs:
+  using: 'node20'
+  main: 'index.js'
