@@ -17,13 +17,14 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: '20'
+          cache: pnpm
 
       - name: Install pnpm
         uses: pnpm/action-setup@v2
         with:
           version: 8
 
-      - name: Install Dependencies and Build
+      - name: Install Dependencies
         run: pnpm install
 
       - name: run the tests
