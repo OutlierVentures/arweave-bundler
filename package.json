@@ -23,7 +23,12 @@
     "arbundles": "^0.10.0",
     "arweave": "^1.14.4",
     "base64url": "^3.0.1",
-    "yargs": "^17.7.2"
+    "yargs": "^17.7.2",
+    "@randlabs/myalgo-connect": "^1.1.2",
+    "algosdk": "^1.13.1",
+    "arweave-stream-tx": "^1.1.0",
+    "multistream": "^4.1.0",
+    "tmp-promise": "^3.0.2"
   },
   "devDependencies": {
     "esmock": "^2.5.8",
