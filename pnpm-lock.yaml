@@ -11,6 +11,9 @@ dependencies:
   '@actions/github':
     specifier: ^6.0.0
     version: 6.0.0
+  '@irys/arweave':
+    specifier: ^0.0.2
+    version: 0.0.2
   arbundles:
     specifier: ^0.10.0
     version: 0.10.0(arweave@1.14.4)
