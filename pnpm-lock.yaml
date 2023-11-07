@@ -53,6 +53,9 @@ dependencies:
   axios:
     specifier: ^1.6.0
     version: 1.6.0
+  base64-js:
+    specifier: ^1.5.1
+    version: 1.5.1
   base64url:
     specifier: ^3.0.1
     version: 3.0.1
