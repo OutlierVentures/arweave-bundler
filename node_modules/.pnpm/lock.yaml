@@ -17,6 +17,9 @@ dependencies:
   arweave:
     specifier: ^1.14.4
     version: 1.14.4
+  base64url:
+    specifier: ^3.0.1
+    version: 3.0.1
   yargs:
     specifier: ^17.7.2
     version: 17.7.2
