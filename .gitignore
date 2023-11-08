@@ -2,3 +2,4 @@ base64key.txt
 wallet.json
 .coverage
 package-lock.json
+node_modules
