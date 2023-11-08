@@ -1,4 +1,7 @@
 # Arweave Bundler
+[![MIT License](https://img.shields.io/apm/l/atomic-design-ui.svg?)](https://github.com/OutlierVentures/arweave-bundler/blob/master/LICENCE.md)
+[![GitHub Release](https://img.shields.io/github/release/tterb/PlayMusic.svg?style=flat)](https://github.com/OutlierVentures/arweave-bundler/releases)
+
 
 A GitHub action and CLI to upload static assets from a directory. 
 Ideal for publishing Single Page App (SPA) or other static contents to the permameweb.
