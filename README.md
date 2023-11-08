@@ -2,6 +2,7 @@
 
 A GitHub action and CLI to upload static assets from a directory. 
 Ideal for publishing Single Page App (SPA) or other static contents to the permameweb.
+The lib use semantic versioning 
 
 ## Use the action
 

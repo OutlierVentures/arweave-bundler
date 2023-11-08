@@ -1,17 +1,17 @@
-name: Build
+name: Semantic Release Workflow
 
 on:
   push:
     branches:
-      - '!master'
+      - master
 
 jobs:
-  test:
+  semantic-release:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v2
+      - name: Checkout code
+        uses: actions/checkout@v3
 
       - name: Install pnpm
         uses: pnpm/action-setup@v2
@@ -37,3 +37,6 @@ jobs:
           private-key: ${{secrets.ARWEAVE_PRIVATE_KEY}}
           dry-run: true
           network: arweave.net
+
+      - name: Run Semantic Release
+        run: npx semantic-release
