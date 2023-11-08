@@ -12,7 +12,10 @@
     "test:coverage": "node --test --experimental-test-coverage --test-reporter=spec",
     "test:watch": "node --test --watch",
     "test:watch-only": "node --test --watch --test-only",
-    "build": "ncc build index.js --license licenses.txt --out dist --target es2020"
+    "build": "ncc build index.js --license licenses.txt --out dist --target es2020",
+    "release-major": "pnpm build && pnpm version major && git push && git push --tags",
+    "release-minor": "pnpm build && pnpm version minor && git push && git push --tags",
+    "release-patch": "pnpm build && pnpm version patch && git push && git push --tags"
   },
   "keywords": [],
   "author": "Lorenzo Sicilia",
