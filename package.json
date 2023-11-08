@@ -11,17 +11,19 @@
     "test": "node --test --experimental-test-coverage ",
     "test:coverage": "node --test --experimental-test-coverage --test-reporter=spec",
     "test:watch": "node --test --watch",
-    "test:watch-only": "node --test --watch --test-only"
+    "test:watch-only": "node --test --watch --test-only",
+    "build": "ncc build index.js --license licenses.txt --out dist --target es2020"
   },
   "keywords": [],
   "author": "Lorenzo Sicilia",
   "license": "MIT",
   "dependencies": {
+    "@actions/core": "^1.10.1",
+    "@actions/github": "^6.0.0",
+    "@vercel/ncc": "^0.38.1",
     "arbundles": "^0.10.0",
     "arweave": "^1.14.4",
-    "yargs": "^17.7.2",
-    "@actions/core": "^1.10.1",
-    "@actions/github": "^6.0.0"
+    "yargs": "^17.7.2"
   },
   "devDependencies": {
     "esmock": "^2.5.8",
