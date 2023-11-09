@@ -1,7 +1,7 @@
 {
   "name": "arweave-bundler",
   "version": "0.2.1",
-  "repository":"https://github.com/OutlierVentures/arweave-bundler",
+  "repository": "https://github.com/OutlierVentures/arweave-bundler",
   "description": "",
   "type": "module",
   "private": true,
@@ -29,6 +29,7 @@
     "arbundles": "^0.10.0",
     "arweave": "^1.14.4",
     "semantic-release": "^22.0.7",
+    "semantic-release-pnpm": "^1.0.2",
     "yargs": "^17.7.2"
   },
   "devDependencies": {
