@@ -7,7 +7,7 @@
     "@semantic-release/github",
     ["semantic-release-pnpm", {
         "npmPublish": false,
-    }]
+    }],
     "@semantic-release/git"
   ]
 }
