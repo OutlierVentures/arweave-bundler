@@ -1,3 +1,10 @@
+## [0.1.3](https://github.com/OutlierVentures/arweave-bundler/compare/v0.1.2...v0.1.3) (2023-11-10)
+
+
+### Bug Fixes
+
+* add the bin attribute for npx ([#10](https://github.com/OutlierVentures/arweave-bundler/issues/10)) ([72f1e2b](https://github.com/OutlierVentures/arweave-bundler/commit/72f1e2b6d8251f048ac842a3592bd81fc04da3c3))
+
 ## [0.1.2](https://github.com/OutlierVentures/arweave-bundler/compare/v0.1.1...v0.1.2) (2023-11-10)
 
 
