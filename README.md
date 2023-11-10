@@ -9,7 +9,7 @@ The lib use semantic versioning
 ## Use the action
 
 ```
-uses: outlierventures/arweabe-bundler-action@v0.2.0
+uses: outlierventures/arweave-bundler-action@v0.2.0
 with:
   directory: build/
   private-key: ${secret.ARWEAVE_PRIVATE_KEY}
