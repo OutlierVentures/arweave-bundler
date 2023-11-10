@@ -9,6 +9,9 @@
   "engines": {
     "node": "v20"
   },
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "test": "node --test --experimental-test-coverage ",
     "test:coverage": "node --test --experimental-test-coverage --test-reporter=spec",
