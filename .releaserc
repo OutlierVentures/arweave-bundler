@@ -9,7 +9,6 @@
        {
          "npmPublish": true,
          "tarballDir": "src",
-         "npmRegistry": "https://npm.pkg.github.com/"
        }
     ],
     "@semantic-release/git"
