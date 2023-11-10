@@ -22,17 +22,17 @@
   "dependencies": {
     "@actions/core": "^1.10.1",
     "@actions/github": "^6.0.0",
-    "@semantic-release/changelog": "^6.0.3",
-    "@semantic-release/git": "^10.0.1",
-    "@semantic-release/github": "^9.2.1",
     "@vercel/ncc": "^0.38.1",
     "arbundles": "^0.10.0",
     "arweave": "^1.14.4",
     "semantic-release": "^22.0.7",
-    "semantic-release-pnpm": "^1.0.2",
     "yargs": "^17.7.2"
   },
   "devDependencies": {
+    "@semantic-release/changelog": "^6.0.3",
+    "@semantic-release/git": "^10.0.1",
+    "@semantic-release/github": "^9.2.1",
+    "@semantic-release/npm": "^11.0.1",
     "esmock": "^2.5.8",
     "prettier": "^3.0.3"
   }
