@@ -1,3 +1,10 @@
+## [1.0.1](https://github.com/OutlierVentures/arweave-bundler/compare/v1.0.0...v1.0.1) (2023-11-10)
+
+
+### Bug Fixes
+
+* activate package publishing ([89c3fe1](https://github.com/OutlierVentures/arweave-bundler/commit/89c3fe1f10a2636be3cc50a0125fb34f8e92d2da))
+
 # 1.0.0 (2023-11-09)
 
 
