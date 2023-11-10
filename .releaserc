@@ -5,9 +5,7 @@
     "@semantic-release/release-notes-generator",
     "@semantic-release/changelog",
     "@semantic-release/github",
-    ["semantic-release-pnpm", {
-        "npmPublish": false,
-    }],
+    "semantic-release-pnpm",
     "@semantic-release/git"
   ]
 }
