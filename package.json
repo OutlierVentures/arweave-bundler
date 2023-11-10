@@ -1,6 +1,6 @@
 {
   "name": "@outlierventures/arweave-bundler",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "repository": "https://github.com/OutlierVentures/arweave-bundler",
   "description": "",
   "type": "module",

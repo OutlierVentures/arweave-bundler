@@ -1,3 +1,10 @@
+## [0.1.1](https://github.com/OutlierVentures/arweave-bundler/compare/v0.1.0...v0.1.1) (2023-11-10)
+
+
+### Bug Fixes
+
+* drop the Github package registry ([2881bf3](https://github.com/OutlierVentures/arweave-bundler/commit/2881bf30fb85966c904446951ebcd606ee64930a))
+
 # [0.1.0](https://github.com/OutlierVentures/arweave-bundler/compare/v0.0.0...v0.1.0) (2023-11-10)
 
 
