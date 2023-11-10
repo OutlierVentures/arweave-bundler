@@ -1,3 +1,10 @@
+## [0.1.2](https://github.com/OutlierVentures/arweave-bundler/compare/v0.1.1...v0.1.2) (2023-11-10)
+
+
+### Bug Fixes
+
+* make the package public ([7af066b](https://github.com/OutlierVentures/arweave-bundler/commit/7af066bb46c38d2b686a05230907a5ff200ce33f))
+
 ## [0.1.1](https://github.com/OutlierVentures/arweave-bundler/compare/v0.1.0...v0.1.1) (2023-11-10)
 
 
