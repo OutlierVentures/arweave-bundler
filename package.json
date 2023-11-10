@@ -1,10 +1,10 @@
 {
-  "name": "arweave-bundler",
-  "version": "1.0.0",
+  "name": "@outlierventures/arweave-bundler",
+  "version": "0.2.1",
   "repository": "https://github.com/OutlierVentures/arweave-bundler",
   "description": "",
   "type": "module",
-  "private": true,
+  "private": false,
   "main": "src/cli.js",
   "engines": {
     "node": "v20"

@@ -5,7 +5,13 @@
     "@semantic-release/release-notes-generator",
     "@semantic-release/changelog",
     "@semantic-release/github",
-    "semantic-release-pnpm",
+     ["semantic-release-pnpm",
+          {
+            "npmPublish": true,
+            "tarballDir": "src",
+            "npmRegistry": "https://npm.pkg.github.com/"
+          }
+    ],
     "@semantic-release/git"
   ]
 }
