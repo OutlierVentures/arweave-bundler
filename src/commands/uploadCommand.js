@@ -8,6 +8,16 @@ export const builder = (yargs) => {
     describe: 'The directory containing files to upload',
     type: 'string',
   })
+  .option('private-key', {
+    describe:
+      'Path to the private key file (default: wallet.json) or base64 encoded private key (JWK)',
+    type: 'string',
+  })
+  .option('dry-run', {
+    describe: 'run everything expect submitting the transaction',
+    type: 'boolean',
+    default: false,
+  })
 }
 
 export const handler = async (argv) => {
