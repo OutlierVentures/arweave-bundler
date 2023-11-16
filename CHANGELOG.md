@@ -1,3 +1,10 @@
+## [0.1.4](https://github.com/OutlierVentures/arweave-bundler/compare/v0.1.3...v0.1.4) (2023-11-16)
+
+
+### Bug Fixes
+
+* make sure we wait for the right tx ([#12](https://github.com/OutlierVentures/arweave-bundler/issues/12)) ([63f2a19](https://github.com/OutlierVentures/arweave-bundler/commit/63f2a19e9419f4b721bcda2dae6cca2ace2c5a03))
+
 ## [0.1.3](https://github.com/OutlierVentures/arweave-bundler/compare/v0.1.2...v0.1.3) (2023-11-10)
 
 
