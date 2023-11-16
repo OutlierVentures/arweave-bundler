@@ -40,13 +40,13 @@ export async function upload(buildDir, privateKey, dryRun) {
   // Workaround use Arweave.js lib to sign with the JWK rather than `signer` from ArweaveSigner
   await arweave.transactions.sign(tx, privateKey)
 
-  const id = await executeTransaction(tx, arweave, dryRun)
+  const txId = await executeTransaction(tx, arweave, dryRun)
 
   if (dryRun) {
     return 1
   }
-  console.log(`Wait for tx ${id}...`)
-  let response = await arweave.transactions.getStatus(id)
+  console.log(`Wait for tx ${txId}...`)
+  let response = await arweave.transactions.getStatus(txId)
 
   console.log(
     '----> number_of_confirmations:',
@@ -54,19 +54,20 @@ export async function upload(buildDir, privateKey, dryRun) {
   )
   while (!response.confirmed?.number_of_confirmations > 0) {
     console.log(
-      `${id} confirmations: ${response.confirmed.number_of_confirmations}`,
+      `${txId} confirmations: ${response.confirmed.number_of_confirmations}`,
     )
     await sleep(1000 * 5)
-    response = await arweave.transactions.getStatus(id)
+    response = await arweave.transactions.getStatus(txId)
   }
-  console.log(`${tx.id} confirmed`)
+  console.log(`https://viewblock.io/arweave/tx/${txId}`)
+  console.log(`${txId} confirmed`)
   console.log(
-    `   ${tx.id} number_of_confirmations:`,
+    `   ${txId} number_of_confirmations:`,
     response.confirmed.number_of_confirmations,
   )
-  console.log(`   tx ${tx.id} block_height:`, response.confirmed.block_height)
+  console.log(`   tx ${txId} block_height:`, response.confirmed.block_height)
   console.log(
-    `   tx ${tx.id} block_indep_hash:`,
+    `   tx ${txId} block_indep_hash:`,
     response.confirmed.block_indep_hash,
   )
   return response.confirmed
