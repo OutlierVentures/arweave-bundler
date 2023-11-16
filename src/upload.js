@@ -48,14 +48,16 @@ export async function upload(buildDir, privateKey, dryRun) {
   console.log(`Wait for tx ${id}...`)
   let response = await arweave.transactions.getStatus(id)
 
+  console.log(
+    '----> number_of_confirmations:',
+    response.confirmed?.number_of_confirmations,
+  )
   while (!response.confirmed?.number_of_confirmations > 0) {
     console.log(
       `${id} confirmations: ${response.confirmed.number_of_confirmations}`,
     )
     await sleep(1000 * 5)
-    response = await arweave.transactions.getStatus(
-      'lTzL3vSqvUVKjbXlO0F6FhfiUMEnT1PBJz5wpJW5Xbg',
-    )
+    response = await arweave.transactions.getStatus(id)
   }
   console.log(`${tx.id} confirmed`)
   console.log(
