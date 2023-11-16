@@ -1,4 +1,5 @@
 import { it, describe, mock, beforeEach } from 'node:test'
+import esmock from 'esmock'
 import assert from 'node:assert'
 import { upload } from './upload.js' // Import the upload function
 import arweave from 'arweave'
@@ -10,42 +11,37 @@ describe('upload', () => {
   let getUploaderMock
   let getStatusMock
   let signMock
+  const txId = 'TxId'
 
   beforeEach(() => {
     // Mock the Arweave library
     createTransactionMock = mock.fn(() => {
       return {
-        id: 'TxId',
+        id: txId,
         addTag: mock.fn(() => {}),
         getRaw: mock.fn(() => 'data'),
       }
     })
-    getUploaderMock = mock.fn()
-    getUploaderMock.mock.mockImplementationOnce(() => ({
-      pctComplete: 50,
-      totalChunks: 100,
-      uploadedChunks: 50,
-      isComplete: false,
-      uploadChunk: mock.fn(),
-    }))
-    getUploaderMock.mock.mockImplementationOnce(() => ({
+    getUploaderMock = mock.fn(() => ({
       isComplete: true,
       pctComplete: 100,
       totalChunks: 100,
       uploadedChunks: 100,
       uploadChunk: mock.fn(),
     }))
-    getStatusMock = mock.fn()
-    getStatusMock.mock.mockImplementationOnce(() => ({
+
+    getStatusMock = mock.fn(() => ({
       confirmed: {
-        number_of_confirmations: 0,
+        number_of_confirmations: 1,
         block_height: 123,
         block_indep_hash: 'hash',
       },
     }))
+
+    // getStatusMock.mock.mockImplementationOnce()
     getStatusMock.mock.mockImplementationOnce(() => ({
       confirmed: {
-        number_of_confirmations: 1,
+        number_of_confirmations: 0,
         block_height: 123,
         block_indep_hash: 'hash',
       },
@@ -70,9 +66,10 @@ describe('upload', () => {
     assert.equal(result.block_indep_hash, 'hash')
     assert.equal(result.number_of_confirmations, 1)
     assert.equal(result.block_height, 123)
+    assert.equal(getStatusMock.mock.callCount(), 2)
+    assert.equal(getUploaderMock.mock.callCount(), 1)
 
-    // it doesn't track the multiple calls :/
-    // assert.equal(getUploaderMock.mock.callCount(), 2)
-    // assert.equal(getStatusMock.mock.callCount(), 2)
+    assert.deepEqual(getStatusMock.mock.calls[0].arguments, [txId])
+    assert.deepEqual(getStatusMock.mock.calls[1].arguments, [txId])
   })
 })
