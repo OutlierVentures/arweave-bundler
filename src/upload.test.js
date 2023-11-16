@@ -5,7 +5,7 @@ import { upload } from './upload.js' // Import the upload function
 import arweave from 'arweave'
 import privateKeyMock from './fixtures/wallet.json' assert { type: 'json' }
 
-describe.only('upload', () => {
+describe('upload', () => {
   let arweaveMock
   let createTransactionMock
   let getUploaderMock
@@ -60,7 +60,7 @@ describe.only('upload', () => {
     })
   })
 
-  it.only('uploads a bundle to Arweave', async () => {
+  it('uploads a bundle to Arweave', async () => {
     const result = await upload('src/fixtures/test-dir', privateKeyMock)
 
     assert.equal(result.block_indep_hash, 'hash')

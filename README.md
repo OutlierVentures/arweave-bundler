@@ -1,6 +1,7 @@
 # Arweave Bundler
+[![view on npm](https://img.shields.io/npm/v/@outlierventures/arweave-bundler.svg)](https://www.npmjs.org/package/@outlierventures/arweave-bundler)
 ![Licence](https://img.shields.io/github/license/OutlierVentures/arweave-bundler)
-![GitHub release (latest by SemVer including pre-releases)](https://img.shields.io/github/downloads-pre/OutlierVentures/arweave-bundler/latest/total)
+
 
 A GitHub action and CLI to upload static assets from a directory. 
 Ideal for publishing Single Page App (SPA) or other static contents to the permameweb.
@@ -9,7 +10,7 @@ The lib use semantic versioning
 ## Use the action
 
 ```
-uses: outlierventures/arweave-bundler-action@v0.2.0
+uses: outlierventures/arweave-bundler-action@v0.1.3
 with:
   directory: build/
   private-key: ${secret.ARWEAVE_PRIVATE_KEY}
