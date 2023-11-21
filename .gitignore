@@ -3,3 +3,4 @@ wallet.json
 .coverage
 package-lock.json
 node_modules
+dist
