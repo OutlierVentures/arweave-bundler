@@ -64,11 +64,11 @@ describe('upload', () => {
   })
 
   it('uploads a bundle to Arweave', async () => {
-    const result = await upload('src/fixtures/test-dir', privateKeyMock, false)
+    const { result, _ } = await upload('src/fixtures/test-dir', privateKeyMock)
 
-    assert.equal(result.block_indep_hash, 'hash')
-    assert.equal(result.number_of_confirmations, 1)
-    assert.equal(result.block_height, 123)
+    assert.equal(result.confirmed.block_indep_hash, 'hash')
+    assert.equal(result.confirmed.number_of_confirmations, 1)
+    assert.equal(result.confirmed.block_height, 123)
     assert.equal(getStatusMock.mock.callCount(), 2)
     assert.equal(getUploaderMock.mock.callCount(), 1)
 

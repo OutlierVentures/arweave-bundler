@@ -43,32 +43,38 @@ export async function upload(buildDir, privateKey, dryRun) {
   const txId = await executeTransaction(tx, arweave, dryRun)
 
   if (dryRun) {
-    return 1
+    return { 
+      result: 'dry-run', 
+      manifestId: manifestDataItem.id
+    }
   }
   console.log(`Wait for tx ${txId}...`)
-  let response = await arweave.transactions.getStatus(txId)
+  let result = await arweave.transactions.getStatus(txId)
 
   console.log(
     '----> number_of_confirmations:',
-    response.confirmed?.number_of_confirmations,
+    result.confirmed?.number_of_confirmations,
   )
-  while (!response.confirmed?.number_of_confirmations > 0) {
+  while (!result.confirmed?.number_of_confirmations > 0) {
     console.log(
-      `${txId} confirmations: ${response.confirmed?.number_of_confirmations}`,
+      `${txId} confirmations: ${result.confirmed?.number_of_confirmations}`,
     )
     await sleep(1000 * 5)
-    response = await arweave.transactions.getStatus(txId)
+    result = await arweave.transactions.getStatus(txId)
   }
   console.log(`https://viewblock.io/arweave/tx/${txId}`)
   console.log(`${txId} confirmed`)
   console.log(
     `   ${txId} number_of_confirmations:`,
-    response.confirmed.number_of_confirmations,
+    result.confirmed.number_of_confirmations,
   )
-  console.log(`   tx ${txId} block_height:`, response.confirmed.block_height)
+  console.log(`   tx ${txId} block_height:`, result.confirmed.block_height)
   console.log(
     `   tx ${txId} block_indep_hash:`,
-    response.confirmed.block_indep_hash,
+    result.confirmed.block_indep_hash,
   )
-  return response.confirmed
+  return { 
+    result,
+    manifestId: manifestDataItem.id
+  }
 }
