@@ -1,9 +1,9 @@
 name: ci
 
-on:
-  push:
-    branches:
-      - '!master'
+on: [push]
+#  push:
+#    branches:
+#      - '!master'
 
 jobs:
   test:
