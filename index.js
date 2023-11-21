@@ -25,6 +25,7 @@ try {
       break
     case 'address':
       console.log('address:', getAddress(privateKey))
+      setOutput('address', getAddress(privateKey))
       break
     default:
       throw new Error(`${command} not supported`)
