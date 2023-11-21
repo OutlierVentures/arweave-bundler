@@ -34,12 +34,13 @@ jobs:
       - name: build the action
         run: pnpm build
 
-      - name: arweave-bundler address
+      - name: get wallet address
         uses: ./
         with:
           command: address
+          private-key: ${{secrets.ARWEAVE_PRIVATE_KEY}}
 
-      - name: arweave-bundler dry run
+      - name: simulate an upload
         uses: ./
         with:
           command: upload
