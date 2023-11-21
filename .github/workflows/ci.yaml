@@ -30,6 +30,9 @@ jobs:
       - name: run the tests
         run: pnpm test:coverage
 
+      - name: build the action
+        run: pnpm build
+
       - name: arweave-bundler address
         uses: ./
         with:
