@@ -10,7 +10,7 @@ The lib use semantic versioning
 ## Use the action
 
 ```
-uses: outlierventures/arweave-bundler-action@v0.1.3
+uses: outlierventures/arweave-bundler-action@v0.2.0
 with:
   directory: build/
   private-key: ${secret.ARWEAVE_PRIVATE_KEY}
@@ -28,6 +28,20 @@ or
 
 ```
 pnpm dlx arweave-bundler upload build/ --private-key ${PRIVATE_KEY}
+```
+
+### commands
+
+```
+arweave-bundler <command>
+
+Commands:
+  arweave-bundler upload <directory>  Upload a directory to Arweave as bundle
+  arweave-bundler address             Print the address of the wallet
+
+Options:
+  --version  Show version number                                       [boolean]
+  --help     Show help                                                 [boolean]
 ```
 
 ## Troubleshooting

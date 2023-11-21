@@ -30,9 +30,15 @@ jobs:
       - name: run the tests
         run: pnpm test:coverage
 
+      - name: arweave-bundler address
+        uses: ./
+        with:
+          command: address
+
       - name: arweave-bundler dry run
         uses: ./
         with:
+          command: upload
           directory: build/
           private-key: ${{secrets.ARWEAVE_PRIVATE_KEY}}
           dry-run: true
