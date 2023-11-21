@@ -37,10 +37,11 @@ pnpm dlx arweave-bundler upload build/ --private-key ${PRIVATE_KEY}
 export PRIVATE_KEY=`cat base64key.txt`
 ```
 
-## Dev requirements
+## Dev Info
 - Node v20 (LTS) 
 - [pnpm](https://pnpm.io/)
 - An Arweave private key with some $AR funds
 - If you don't have an arweave wallet you can create one
   - `pnpm install arweave`
-  - `node -e "require('arweave').init({}).wallets.generate().then(JSON.stringify).then(console.log.bind(console)) > wallet.json"`
+  - `node -e "require('arweave').init({}).wallets.generate().then(JSON.stringify).then(console.log.bind(console))" > wallet.json"`
+- npx
