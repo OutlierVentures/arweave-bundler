@@ -24,7 +24,7 @@ try {
       await upload(directory, privateKey, dryRun)
       break
     case 'address':
-      getAddress(privateKey)
+      console.log('address:', getAddress(privateKey))
       break
     default:
       throw new Error(`${command} not supported`)
