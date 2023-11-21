@@ -1,4 +1,4 @@
-name: Semantic Release Workflow
+name: release
 
 on:
   push:
