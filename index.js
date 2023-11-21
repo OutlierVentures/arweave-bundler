@@ -1,6 +1,6 @@
 import { getInput, setOutput, setFailed } from '@actions/core'
 import { upload } from './src/upload.js'
-import {getAddress} from './src/utils/info.js'
+import { getAddress } from './src/utils/info.js'
 
 try {
   const command = getInput('command')
@@ -24,6 +24,7 @@ try {
       await upload(directory, privateKey, dryRun)
       break
     case 'address':
+      getAddress(privateKey)
       break
     default:
       throw new Error(`${command} not supported`)

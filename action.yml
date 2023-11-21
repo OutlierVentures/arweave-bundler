@@ -8,7 +8,6 @@ inputs:
   directory:
     description: 'directory of static assets to upload'
     required: false
-    default: 'build'
   private-key:
     description: 'an Arweave private key (JWK) encoded as base64'
     required: false
