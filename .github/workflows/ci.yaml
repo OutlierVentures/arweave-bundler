@@ -1,9 +1,9 @@
-name: Build
+name: ci
 
 on:
   push:
-    branches:
-      - '!master'
+    branches-ignore: master
+
 
 jobs:
   test:
@@ -30,9 +30,19 @@ jobs:
       - name: run the tests
         run: pnpm test:coverage
 
-      - name: arweave-bundler dry run
+      - name: build the action
+        run: pnpm build
+
+      - name: get wallet address
         uses: ./
         with:
+          command: address
+          private-key: ${{secrets.ARWEAVE_PRIVATE_KEY}}
+
+      - name: simulate an upload
+        uses: ./
+        with:
+          command: upload
           directory: build/
           private-key: ${{secrets.ARWEAVE_PRIVATE_KEY}}
           dry-run: true
