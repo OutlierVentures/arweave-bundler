@@ -13,7 +13,7 @@ export const builder = (yargs) => {
 }
 
 export const handler = async (argv) => {
-  const privateKey = parsePrivateKey(argv)
+  const privateKey = parsePrivateKey(argv.privateKey)
   const address = getAddress(privateKey)
   console.log(address)
   return true

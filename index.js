@@ -1,6 +1,7 @@
 import { getInput, setOutput, setFailed } from '@actions/core'
 import { upload } from './src/upload.js'
 import { getAddress } from './src/utils/info.js'
+import {parsePrivateKey} from './src/utils/parsePrivateKey.js'
 
 try {
   const command = getInput('command')
@@ -8,20 +9,11 @@ try {
   const dryRun = getInput('dry-run')
   const base64PrivateKey = getInput('private-key')
 
-  let privateKey
-  try {
-    privateKey = JSON.parse(
-      Buffer.from(base64PrivateKey, 'base64').toString('utf-8'),
-    )
-  } catch (e) {
-    throw new Error(
-      `Missing private key or not encoded as base64: ${e.message}`,
-    )
-  }
+  const privateKey = parsePrivateKey(base64PrivateKey)
 
   switch (command) {
     case 'upload':
-      await upload(directory, privateKey, dryRun)
+      await upload(directory, privateKey, dryRun.toLowerCase() === 'true')
       break
     case 'address':
       console.log('address:', getAddress(privateKey))

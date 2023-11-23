@@ -61,7 +61,7 @@ describe('upload', () => {
   })
 
   it('uploads a bundle to Arweave', async () => {
-    const result = await upload('src/fixtures/test-dir', privateKeyMock)
+    const result = await upload('src/fixtures/test-dir', privateKeyMock, false)
 
     assert.equal(result.block_indep_hash, 'hash')
     assert.equal(result.number_of_confirmations, 1)
@@ -72,4 +72,5 @@ describe('upload', () => {
     assert.deepEqual(getStatusMock.mock.calls[0].arguments, [txId])
     assert.deepEqual(getStatusMock.mock.calls[1].arguments, [txId])
   })
+  it('executes a dry run')
 })
