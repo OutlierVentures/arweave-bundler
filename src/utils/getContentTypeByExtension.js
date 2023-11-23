@@ -1,4 +1,4 @@
-export function getContentTypeByExtension (ext) {
+export function getContentTypeByExtension(ext) {
   switch (ext.toLowerCase()) {
     case '.html':
       return 'text/html'
@@ -21,6 +21,8 @@ export function getContentTypeByExtension (ext) {
       return 'image/jpeg'
     case '.gif':
       return 'image/gif'
+    case '.svg':
+      return 'application/svg+xml'
     default:
       return 'application/octet-stream' // default to binary data
   }

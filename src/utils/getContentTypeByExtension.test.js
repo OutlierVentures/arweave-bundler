@@ -15,6 +15,7 @@ describe('getContentTypeByExtension', () => {
     '.jpg': 'image/jpeg',
     '.jpeg': 'image/jpeg',
     '.gif': 'image/gif',
+    '.svg': 'application/svg+xml',
   }
 
   Object.entries(contentTypeMapping).forEach(([ext, expectedContentType]) => {
