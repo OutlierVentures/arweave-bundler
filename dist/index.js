@@ -73658,7 +73658,7 @@ async function buildManifest (files, buildDir, signer) {
 }
 
 ;// CONCATENATED MODULE: ./src/utils/getContentTypeByExtension.js
-function getContentTypeByExtension (ext) {
+function getContentTypeByExtension(ext) {
   switch (ext.toLowerCase()) {
     case '.html':
       return 'text/html'
@@ -73681,6 +73681,8 @@ function getContentTypeByExtension (ext) {
       return 'image/jpeg'
     case '.gif':
       return 'image/gif'
+    case '.svg':
+      return 'application/svg+xml'
     default:
       return 'application/octet-stream' // default to binary data
   }
@@ -73827,7 +73829,7 @@ async function upload(buildDir, privateKey, dryRun) {
   )
   while (!response.confirmed?.number_of_confirmations > 0) {
     console.log(
-      `${txId} confirmations: ${response.confirmed.number_of_confirmations}`,
+      `${txId} confirmations: ${response.confirmed?.number_of_confirmations}`,
     )
     await sleep(1000 * 5)
     response = await arweave.transactions.getStatus(txId)
