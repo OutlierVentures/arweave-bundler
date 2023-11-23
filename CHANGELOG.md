@@ -1,3 +1,15 @@
+# [0.2.0](https://github.com/OutlierVentures/arweave-bundler/compare/v0.1.4...v0.2.0) (2023-11-23)
+
+
+### Bug Fixes
+
+* parse the dryRun argument and convert to a boolean ([#14](https://github.com/OutlierVentures/arweave-bundler/issues/14)) ([ca9c652](https://github.com/OutlierVentures/arweave-bundler/commit/ca9c652c892f5c90bd2a7b6ed6179fe0c631246e))
+
+
+### Features
+
+* add address command ([#13](https://github.com/OutlierVentures/arweave-bundler/issues/13)) ([dfe498f](https://github.com/OutlierVentures/arweave-bundler/commit/dfe498fc80c04a95f0bb9c62ed8b32e09b1c3e98))
+
 ## [0.1.4](https://github.com/OutlierVentures/arweave-bundler/compare/v0.1.3...v0.1.4) (2023-11-16)
 
 
