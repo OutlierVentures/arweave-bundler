@@ -1,3 +1,10 @@
+## [0.2.1](https://github.com/OutlierVentures/arweave-bundler/compare/v0.2.0...v0.2.1) (2023-11-23)
+
+
+### Bug Fixes
+
+* add back dist ([#15](https://github.com/OutlierVentures/arweave-bundler/issues/15)) ([4cd2816](https://github.com/OutlierVentures/arweave-bundler/commit/4cd281679d6b8fae30dea5248677a071185c4224))
+
 # [0.2.0](https://github.com/OutlierVentures/arweave-bundler/compare/v0.1.4...v0.2.0) (2023-11-23)
 
 
