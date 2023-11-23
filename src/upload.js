@@ -54,7 +54,7 @@ export async function upload(buildDir, privateKey, dryRun) {
   )
   while (!response.confirmed?.number_of_confirmations > 0) {
     console.log(
-      `${txId} confirmations: ${response.confirmed.number_of_confirmations}`,
+      `${txId} confirmations: ${response.confirmed?.number_of_confirmations}`,
     )
     await sleep(1000 * 5)
     response = await arweave.transactions.getStatus(txId)

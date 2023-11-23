@@ -38,7 +38,7 @@ describe('upload', () => {
       },
     }))
 
-    // getStatusMock.mock.mockImplementationOnce()
+
     getStatusMock.mock.mockImplementationOnce(() => ({
       confirmed: {
         number_of_confirmations: 0,
@@ -46,6 +46,9 @@ describe('upload', () => {
         block_indep_hash: 'hash',
       },
     }))
+
+    // empty response
+    getStatusMock.mock.mockImplementationOnce(() => ({}))
 
     signMock = mock.fn()
     arweaveMock = mock.method(arweave, 'init', () => {
