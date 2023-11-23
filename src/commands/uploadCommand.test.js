@@ -28,7 +28,7 @@ describe('uploadCommand', async () => {
       const privateKey = btoa(JSON.stringify(privateKeyMock))
       const argv = {
         directory: 'build',
-        dryRun: 'false',
+        dryRun: false,
         privateKey,
       }
       const response = await handler(argv)
@@ -44,7 +44,7 @@ describe('uploadCommand', async () => {
       const privateKey = btoa(JSON.stringify(privateKeyMock))
       const argv = {
         directory: 'build',
-        dryRun: 'True',
+        dryRun: true,
         privateKey,
       }
       const response = await handler(argv)
@@ -55,5 +55,6 @@ describe('uploadCommand', async () => {
       ])
       assert.ok(response === undefined)
     })
+
   })
 })

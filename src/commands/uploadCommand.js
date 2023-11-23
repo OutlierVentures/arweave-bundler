@@ -23,9 +23,8 @@ export const builder = (yargs) => {
 }
 
 export const handler = async (argv) => {
-  const { directory } = argv
-  const privateKey = parsePrivateKey(argv)
-  const dryRun = (argv.dryRun || 'false').toLowerCase() === 'true'
+  const { directory, dryRun } = argv
+  const privateKey = parsePrivateKey(argv.privateKey)
   return await upload(directory, privateKey, dryRun)
 }
 
