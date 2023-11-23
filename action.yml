@@ -2,9 +2,8 @@ name: 'arweave-bundler'
 description: 'an arweave bundle to deploy a directory into the permanent web'
 inputs:
   command:
-    description: 'directory of static assets to upload'
+    description: 'one of the supported command (e.g. upload, address)'
     required: true
-    default: 'build'
   directory:
     description: 'directory of static assets to upload'
     required: false

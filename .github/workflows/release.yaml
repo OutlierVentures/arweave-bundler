@@ -44,6 +44,7 @@ jobs:
       - name: simulate an upload
         uses: ./
         with:
+          command: upload
           directory: build/
           private-key: ${{secrets.ARWEAVE_PRIVATE_KEY}}
           dry-run: true
