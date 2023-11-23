@@ -73682,7 +73682,7 @@ function getContentTypeByExtension(ext) {
     case '.gif':
       return 'image/gif'
     case '.svg':
-      return 'application/svg+xml'
+      return 'image/svg+xml'
     default:
       return 'application/octet-stream' // default to binary data
   }
