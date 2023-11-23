@@ -1,8 +1,6 @@
 import fs from 'fs'
 export function parsePrivateKey (argv) {
     let privateKey
-    // const file = fs.readFileSync('wallet.json')
-    // console.log({file})
     try {
         privateKey = argv.privateKey
             ? JSON.parse(Buffer.from(argv.privateKey, 'base64').toString('utf-8'))
