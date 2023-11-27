@@ -3,7 +3,7 @@ import { it, describe, mock, beforeEach } from 'node:test'
 import { execSync } from 'child_process';
 import privateKeyMock from './fixtures/wallet.json' assert { type: 'json' }
 
-describe.only('CLI', () => {
+describe('CLI', () => {
   const directory = 'src/fixtures/test-dir';
 
   it('uploads a directory to Arweave as dry-run', () => {
@@ -18,7 +18,7 @@ describe.only('CLI', () => {
     assert.ok(output.trim().includes(`Starting upload of '${directory}'`), 'Expected output or empty string if no output');
   });
 
-  it.only('set an ArNS record as dry run', () => {
+  it('set an ArNS record as dry run', () => {
 
     const privateKey = btoa(JSON.stringify(privateKeyMock))
     const command = `src/cli.js set --ant-address vyti5Zsqbk25hTsYrIkePpwKK7jdiXNDHRKa09die3g --manifest-id VE_LjHiqLA2Je2pCc5CP4irvxPVab4mGIViSOv2EspA --private-key ${privateKey} --dry-run`
