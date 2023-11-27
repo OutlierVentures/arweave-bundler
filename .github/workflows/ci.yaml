@@ -33,11 +33,11 @@ jobs:
       - name: build the action
         run: pnpm build
 
-      - name: get wallet address
-        uses: ./
-        with:
-          command: address
-          private-key: ${{secrets.ARWEAVE_PRIVATE_KEY}}
+#      - name: get wallet address
+#        uses: ./
+#        with:
+#          command: address
+#          private-key: ${{secrets.ARWEAVE_PRIVATE_KEY}}
 
       - name: simulate an upload
         uses: ./
