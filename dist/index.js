@@ -73658,34 +73658,26 @@ async function buildManifest (files, buildDir, signer) {
 }
 
 ;// CONCATENATED MODULE: ./src/utils/getContentTypeByExtension.js
+const CONTENT_TYPE_MAPPING = {
+  '.html': 'text/html',
+  '.txt': 'text/plain',
+  '.css': 'text/css',
+  '.js': 'application/javascript',
+  '.js.map': 'application/json',
+  '.json': 'application/json',
+  '.png': 'image/png',
+  '.ico': 'image/x-icon',
+  '.jpg': 'image/jpeg',
+  '.jpeg': 'image/jpeg',
+  '.gif': 'image/gif',
+  '.svg': 'image/svg+xml',
+}
+
 function getContentTypeByExtension(ext) {
-  switch (ext.toLowerCase()) {
-    case '.html':
-      return 'text/html'
-    case '.txt':
-      return 'text/plain'
-    case '.css':
-      return 'text/css'
-    case '.js':
-      return 'application/javascript'
-    case '.js.map':
-      return 'application/json'
-    case '.json':
-      return 'application/json'
-    case '.png':
-      return 'image/png'
-    case '.ico':
-      return 'image/x-icon'
-    case '.jpg':
-    case '.jpeg':
-      return 'image/jpeg'
-    case '.gif':
-      return 'image/gif'
-    case '.svg':
-      return 'image/svg+xml'
-    default:
-      return 'application/octet-stream' // default to binary data
-  }
+  const extension = ext.toLowerCase()
+  return CONTENT_TYPE_MAPPING[extension]
+    ? CONTENT_TYPE_MAPPING[extension]
+    : 'application/octet-stream'
 }
 
 ;// CONCATENATED MODULE: ./src/utils/createDataItem.js
@@ -73818,34 +73810,40 @@ async function upload(buildDir, privateKey, dryRun) {
   const txId = await executeTransaction(tx, arweave, dryRun)
 
   if (dryRun) {
-    return 1
+    return { 
+      result: 'dry-run', 
+      manifestId: manifestDataItem.id
+    }
   }
   console.log(`Wait for tx ${txId}...`)
-  let response = await arweave.transactions.getStatus(txId)
+  let result = await arweave.transactions.getStatus(txId)
 
   console.log(
     '----> number_of_confirmations:',
-    response.confirmed?.number_of_confirmations,
+    result.confirmed?.number_of_confirmations,
   )
-  while (!response.confirmed?.number_of_confirmations > 0) {
+  while (!result.confirmed?.number_of_confirmations > 0) {
     console.log(
-      `${txId} confirmations: ${response.confirmed?.number_of_confirmations}`,
+      `${txId} confirmations: ${result.confirmed?.number_of_confirmations}`,
     )
     await sleep(1000 * 5)
-    response = await arweave.transactions.getStatus(txId)
+    result = await arweave.transactions.getStatus(txId)
   }
   console.log(`https://viewblock.io/arweave/tx/${txId}`)
   console.log(`${txId} confirmed`)
   console.log(
     `   ${txId} number_of_confirmations:`,
-    response.confirmed.number_of_confirmations,
+    result.confirmed.number_of_confirmations,
   )
-  console.log(`   tx ${txId} block_height:`, response.confirmed.block_height)
+  console.log(`   tx ${txId} block_height:`, result.confirmed.block_height)
   console.log(
     `   tx ${txId} block_indep_hash:`,
-    response.confirmed.block_indep_hash,
+    result.confirmed.block_indep_hash,
   )
-  return response.confirmed
+  return { 
+    result,
+    manifestId: manifestDataItem.id
+  }
 }
 
 
