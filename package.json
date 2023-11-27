@@ -30,6 +30,7 @@
     "arbundles": "^0.10.0",
     "arweave": "^1.14.4",
     "semantic-release": "^22.0.7",
+    "warp-contracts": "^1.4.25",
     "yargs": "^17.7.2"
   },
   "devDependencies": {

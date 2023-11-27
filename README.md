@@ -18,7 +18,10 @@ with:
   network: arweave.net
 ```
 
-## Run the cli
+## Run the CLI 
+
+### Commands
+
 
 ```
 npx arweave-bundler upload build/ --private-key ${PRIVATE_KEY}
