@@ -3,10 +3,10 @@ import { it, describe, mock, beforeEach } from 'node:test'
 import { execSync } from 'child_process';
 import privateKeyMock from './fixtures/wallet.json' assert { type: 'json' }
 
-describe('CLI', () => {
+describe.only('CLI', () => {
   const directory = 'src/fixtures/test-dir';
 
-  it('should upload a directory to Arweave', () => {
+  it('uploads a directory to Arweave as dry-run', () => {
 
     const privateKey = btoa(JSON.stringify(privateKeyMock))
     const command = `src/cli.js upload ${directory} --private-key=${privateKey} --dry-run`
@@ -16,6 +16,19 @@ describe('CLI', () => {
 
     // Assert the output or other expectations based on the script behavior
     assert.ok(output.trim().includes(`Starting upload of '${directory}'`), 'Expected output or empty string if no output');
+  });
+
+  it.only('set an ArNS record as dry run', () => {
+
+    const privateKey = btoa(JSON.stringify(privateKeyMock))
+    const command = `src/cli.js set --ant-address vyti5Zsqbk25hTsYrIkePpwKK7jdiXNDHRKa09die3g --manifest-id VE_LjHiqLA2Je2pCc5CP4irvxPVab4mGIViSOv2EspA --private-key ${privateKey} --dry-run`
+
+    // Execute the CLI command using execSync
+    const output = execSync(command).toString();
+
+    // Assert the output or other expectations based on the script behavior
+    //TODO LS figure out a better way to have a dry run with less requirements
+    assert.ok(output.trim().includes(`Caller is not the token owner!`));
   });
 
   it('prints the address of the private key', () => {

@@ -2,7 +2,7 @@ name: 'arweave-bundler'
 description: 'an arweave bundle to deploy a directory into the permanent web'
 inputs:
   command:
-    description: 'one of the supported command (e.g. upload, address)'
+    description: 'one of the supported command (e.g. upload, address, set)'
     required: true
   directory:
     description: 'directory of static assets to upload'
@@ -13,9 +13,16 @@ inputs:
   dry-run:
     description: 'run everything but skip to submit the tx to Arweave network'
     default: false
+  ant-address:
+    description: 'Arweave Name Token (ANT) address of the record being updated'
+    default: false
+  manifest-id:
+    description: 'Target transaction id to update the ANT record with'
+    default: false
   network:
     description: 'directory of static assets to upload'
     default: 'arweave.net'
+
 
 outputs:
   txId: # the tx id of arweave
