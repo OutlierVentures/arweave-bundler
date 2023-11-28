@@ -27,7 +27,7 @@ describe.only('CLI', () => {
     const output = execSync(command).toString();
 
     // Assert the output or other expectations based on the script behavior
-    //TODO LS figure out a better way to have a dry run with less requirements
+    // TODO LS figure out a better way to have a dry run with less requirements
     assert.ok(output.trim().includes(`Caller is not the token owner!`));
   });
 
