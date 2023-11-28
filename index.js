@@ -4,7 +4,6 @@ import { upload } from './src/upload.js'
 import { getAddress } from './src/utils/info.js'
 import {parsePrivateKey} from './src/utils/parsePrivateKey.js'
 
-
 try {
   const command = getInput('command')
   const directory = getInput('directory')
