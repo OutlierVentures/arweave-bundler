@@ -59,6 +59,7 @@ arweave-bundler <command>
 Commands:
   arweave-bundler upload <directory>  Upload a directory to Arweave as bundle
   arweave-bundler address             Print the address of the wallet
+  arweave-bundler set                 Set Arweave Name Token record to the manifest id
 
 Options:
   --version  Show version number                                       [boolean]

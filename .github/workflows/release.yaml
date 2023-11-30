@@ -50,6 +50,16 @@ jobs:
           dry-run: true
           network: arweave.net
 
+      - name: set the ArNS record
+        uses: ./
+        with:
+          command: set
+          manifest-id: EvHa663GhcAFh1cNbioclep9S0goMwWBQgGFyoRyIxk
+          ant-address: vyti5Zsqbk25hTsYrIkePpwKK7jdiXNDHRKa09die3g
+          private-key: ${{secrets.ARWEAVE_PRIVATE_KEY}}
+          dry-run: true
+          network: arweave.net        
+
       - name: Run Semantic Release
         run: npx semantic-release
         env:

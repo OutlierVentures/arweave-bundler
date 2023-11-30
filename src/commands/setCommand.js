@@ -1,7 +1,7 @@
 import { setRecord } from '../setRecord.js'
 
 export const command = 'set'
-export const description = 'Set the Arweave Name Token Record to the transaction id' 
+export const description = 'Set the Arweave Name Token record to the manifest id' 
 
 export const builder = (yargs) => {
   yargs

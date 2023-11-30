@@ -1,60 +1,64 @@
-import { it, describe, mock } from 'node:test';
-import esmock from 'esmock';
+import { it, describe, mock, beforeEach } from 'node:test';
 import assert from 'assert';
+import arweave from 'arweave';
+import { setRecord } from './setRecord.js';
 import privateKeyMock from './fixtures/wallet.json' assert { type: 'json' };
 
 describe('setRecord', async () => {
-    const setRecordPath = './setRecord.js';
+    let arweaveMock;
+    let signMock;
+    let postMock;
+    let createTransactionMock;
+    const txId = 'TxId';
 
-    let writeInteraction = mock.fn()
-    writeInteraction.mock.mockImplementationOnce(() => ({
-        type: 'ok',
-        state: {
-            ticker: 'antName',
-            name: 'arnsName',
-            owner: 'ownerAddress',
-            controller: 'ownerAddress',
-            evolve:null,
-            records: {
-                "@": {
-                    transactionId: 'validManifestId',
-                    ttlSeconds: 900
-                }
-            },
-            balances: {
-                owner_address: 1
+    beforeEach(() => {
+        createTransactionMock = mock.fn(() => {
+            return {
+                id: txId,
+                addTag: mock.fn(() => {})
             }
-        }
-    }));
+        })
+        
+        postMock = mock.fn(async () => Promise.resolve({ 
+            status: 200, 
+            statusText: 'OK', 
+            data: {} 
+        }));
+
+        signMock = mock.fn()
+
+        arweaveMock = mock.method(arweave, 'init', () => {
+            return {
+                createTransaction: createTransactionMock,
+                transactions: {
+                    post: postMock,
+                    sign: signMock
+                },
+            }
+        })
+    })
     
-    const warpContractsMock = {
-        WarpFactory: {
-            forMainnet: () => ({
-                pst: () => ({
-                    connect: () => ({
-                        writeInteraction: writeInteraction,
-                        dryWrite: mock.fn(async () => 'dryWriteMockResponse'),
-                    })
-                })
-            })
-        }
-    };
-
-    // Mock the Warp Contracts SDK
-    const { setRecord } = await esmock(setRecordPath, {
-        ['warp-contracts']: warpContractsMock
-    });
-
     it('should successfully return a dry write response', async () => {
-        const response = await setRecord('validAntAddress', 'validManifestId', privateKeyMock, true);
-        assert.ok(response);
-        assert.strictEqual(response, 'dryWriteMockResponse');
+        const { response, transactionId } = await setRecord('validAntAddress', 'validManifestId', privateKeyMock, true);
+        assert.equal(response.status, 200);
+        assert.equal(response.statusText, 'OK');
+        assert.equal(transactionId, txId);
+        assert.equal(arweaveMock.mock.callCount(), 1);
     });
 
     it('should successfully returns a write interaction response', async () => {
-        const response = await setRecord('validAntAddress', 'validManifestId', privateKeyMock, false);
-        assert.ok(response);
-        assert.strictEqual(response.state.owner, 'ownerAddress');
-        assert.strictEqual(response.state.records['@'].transactionId, 'validManifestId');
+        const { response, transactionId } = await setRecord('validAntAddress', 'validManifestId', privateKeyMock, false);
+        assert.equal(response.status, 200);
+        assert.equal(response.statusText, 'OK');
+        assert.equal(transactionId, 'TxId');
+        assert.equal(arweaveMock.mock.callCount(), 1);
+        assert.equal(createTransactionMock.mock.callCount(), 1);
+        assert.equal(signMock.mock.callCount(), 1);
+        assert.equal(postMock.mock.callCount(), 1);
+
+        assert.equal(createTransactionMock.mock.calls[0].arguments[0].data.length, 4);
+        assert.equal(signMock.mock.calls[0].arguments[0].id, txId);
+        assert.equal(signMock.mock.calls[0].arguments[1], privateKeyMock);
+        assert.equal(postMock.mock.calls[0].arguments[0].id, txId);
     });
 });
