@@ -1,4 +1,3 @@
-import {add} from '@semantic-release/git/lib/git.js'
 import { parsePrivateKey } from '../utils/parsePrivateKey.js'
 import { getAddress } from '../utils/info.js'
 

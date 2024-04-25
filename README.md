@@ -91,20 +91,20 @@ All the Github actions are available to the CLI as well
 ### upload
 
 ```bash
-npx arweave-bundler upload build/ --private-key ${PRIVATE_KEY}
+npx @outlierventures/arweave-bundler@latest upload build/ --private-key ${PRIVATE_KEY}
 ```
 
 alternatively you can upload and update the ant-address
 
 ```bash
- npx arweave-bundler upload build/ --ant-address your-ant-address --private-key ${PRIVATE_KEY}
+ npx @outlierventures/arweave-bundler@latest upload build/ --ant-address your-ant-address --private-key ${PRIVATE_KEY}
 
 ```
 
 ### set
 
 ```bash
- npx arweave-bundler set --ant-address your-ant-address --manifest-id your-manifest-id --private-key ${PRIVATE_KEY}
+ npx @outlierventures/arweave-bundler@latest set --ant-address your-ant-address --manifest-id your-manifest-id --private-key ${PRIVATE_KEY}
 
 ```
 
