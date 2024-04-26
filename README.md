@@ -138,3 +138,12 @@ Options:
 ```bash
 export PRIVATE_KEY=`cat base64key.txt`
 ```
+
+## Development
+Test in local the CLI 
+
+```
+rm -rf node_modules
+pnpm i --prod
+npx . address --private-key $PRIVATE_KEY
+```
